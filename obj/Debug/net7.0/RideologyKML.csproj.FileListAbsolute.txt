@@ -1,0 +1,17 @@
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\bin\Debug\net7.0\RideologyKML.exe
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\bin\Debug\net7.0\RideologyKML.deps.json
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\bin\Debug\net7.0\RideologyKML.runtimeconfig.json
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\bin\Debug\net7.0\RideologyKML.dll
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\bin\Debug\net7.0\RideologyKML.pdb
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\RideologyKML.csproj.AssemblyReference.cache
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\RideologyKML.GeneratedMSBuildEditorConfig.editorconfig
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\RideologyKML.AssemblyInfoInputs.cache
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\RideologyKML.AssemblyInfo.cs
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\RideologyKML.csproj.CoreCompileInputs.cache
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\RideologyKML.dll
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\refint\RideologyKML.dll
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\RideologyKML.pdb
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\RideologyKML.genruntimeconfig.cache
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\ref\RideologyKML.dll
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\bin\Debug\net7.0\CommandLine.dll
+B:\User Profile\Programs\Rideology Converter\RideologyKML\RideologyKML\obj\Debug\net7.0\RideologyKML.csproj.CopyComplete

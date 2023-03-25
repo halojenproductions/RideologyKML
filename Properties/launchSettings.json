@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RideologyKML": {
+      "commandName": "Project",
+      "commandLineArgs": "--file \"C:\\Video Edits (C)\\Rides\\2023-03-12 Ninja 650, Dan\\Ride Map\\Riding_Trip 2023_03_12 11_27 am_20230313061729.csv\""
+    }
+  }
+}
