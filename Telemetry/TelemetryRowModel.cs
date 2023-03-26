@@ -24,7 +24,7 @@ internal class TelemetryRowModel {
 	public string rideology_score { get; set; }
 	public string Coords {
 		get {
-			return $"{gps_longitude.AsString} {gps_latitude.AsString} 1";
+			return $"{gps_longitude.AsString} {gps_latitude.AsString} 2";
 		}
 	}
 

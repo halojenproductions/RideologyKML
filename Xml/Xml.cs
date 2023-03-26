@@ -22,7 +22,6 @@ internal class XmlGenerator {
 		Telemetry = telemetry;
 	}
 	public void Render() {
-
 		Kml = new XElement(ns + "kml",
 			new XAttribute("xmlns", "http://www.opengis.net/kml/2.2"),
 			new XAttribute(XNamespace.Xmlns + "gx", gx.NamespaceName),
@@ -39,10 +38,6 @@ internal class XmlGenerator {
 				)
 			)
 		);
-
-
-
-
 	}
 
 	private XElement GetLookAt() {
@@ -56,9 +51,21 @@ internal class XmlGenerator {
 			new XElement(ns + "range", "5000.000000")
 		);
 	}
+
 	private List<XElement> GetStyles() {
-		return new List<XElement>(); // TODO.
+		return new List<XElement>() {
+			new XElement(ns +"Style",new XAttribute("id","lineStyle"),
+				new XElement(ns +"LineStyle",
+					new XElement(ns +"width","50"),
+					new XElement(ns +"color","ffff0000"),
+					new XElement(gx +"physicalWidth","5"), // Does not work for gx:track.
+					new XElement(gx +"outerColor","ffffffff"),// Does not work for gx:track.
+					new XElement(gx +"outerWidth","0.5")// Does not work for gx:track.
+				)
+			),
+		};
 	}
+
 	private XElement GetSchema() {
 		// TODO: Get cmd args to generate only columns demanded.
 		return new XElement(ns + "Schema", new XAttribute("id", "schema"),
@@ -67,18 +74,21 @@ internal class XmlGenerator {
 			)
 		);
 	}
+
 	private XElement GetFolder(XElement track) {
 		return new XElement(ns + "Folder",
 			new XElement(ns + "name", "Tracks"),
 			new XElement(ns + "Placemark",
 				new XElement(ns + "name", Telemetry.VehicleNickname),
+				new XElement(ns + "styleUrl", "#lineStyle"),
 				track
 			)
 		);
 	}
 	private XElement GetTrack(XElement ext) {
+		// TODO: Interpolite everything. https://swharden.com/blog/2022-01-22-spline-interpolation/
 		return new XElement(gx + "Track",
-			new XElement(ns + "altitudeMode", "clampToGround"),
+			new XElement(ns + "altitudeMode", "relativeToGround"),
 			Telemetry.RowData.Select(rd => new XElement(ns + "when", rd.TimeStampUtc.AsUTC.ToString(Utilities.DtFormat))),
 			Telemetry.RowData.Select(rd => new XElement(gx + "coord", rd.Coords)),
 			ext
