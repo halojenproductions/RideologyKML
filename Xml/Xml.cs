@@ -31,24 +31,25 @@ internal class XmlGenerator {
 				GetLookAt(),
 				GetStyles(),
 				GetSchema(),
-				GetFolder(
+				GetPlacemark(
 					GetTrack(
 						GetExtended()
 					)
-				)
+				),
+				GetBackground()
 			)
 		);
 	}
 
 	private XElement GetLookAt() {
 		return new XElement(ns + "LookAt",
-			new XElement(gx + "TimeSpan",
+			/*new XElement(gx + "TimeSpan",
 				new XElement(ns + "begin", Telemetry.StartTimeUTC.ToString(Utilities.DtFormat)),
 				new XElement(ns + "end", Telemetry.EndTime.ToString(Utilities.DtFormat))
-			),
+			),*/
 			new XElement(ns + "latitude", Telemetry.MiddleLatitude),
 			new XElement(ns + "longitude", Telemetry.MiddleLongitude),
-			new XElement(ns + "range", "5000.000000")
+			new XElement(ns + "range", "15000.0")
 		);
 	}
 
@@ -56,11 +57,26 @@ internal class XmlGenerator {
 		return new List<XElement>() {
 			new XElement(ns +"Style",new XAttribute("id","lineStyle"),
 				new XElement(ns +"LineStyle",
-					new XElement(ns +"width","50"),
+					new XElement(ns +"width","4"),
 					new XElement(ns +"color","ffff0000"),
-					new XElement(gx +"physicalWidth","5"), // Does not work for gx:track.
+					new XElement(gx +"physicalWidth","6"), // Does not work for gx:track.
 					new XElement(gx +"outerColor","ffffffff"),// Does not work for gx:track.
 					new XElement(gx +"outerWidth","0.5")// Does not work for gx:track.
+				),
+				new XElement(ns +"PolyStyle",
+					new XElement(ns +"width","6"),
+					new XElement(ns +"color","ffff0000"),
+					new XElement(gx +"physicalWidth","6"), // Does not work for gx:track.
+					new XElement(gx +"outerColor","ffffffff"),// Does not work for gx:track.
+					new XElement(gx +"outerWidth","0.5")// Does not work for gx:track.
+				),
+				new XElement(ns +"IconStyle",
+					new XElement(ns +"scale","0"),
+					new XElement(ns +"color","00000000")
+				),
+				new XElement(ns +"LabelStyle",
+					new XElement(ns +"scale","0"),
+					new XElement(ns +"color","00000000")
 				)
 			),
 		};
@@ -85,10 +101,36 @@ internal class XmlGenerator {
 			)
 		);
 	}
+
+	private XElement GetPlacemark(XElement track) {
+		return new XElement(ns + "Placemark",
+			new XElement(ns + "name", Telemetry.VehicleNickname),
+			new XElement(ns + "styleUrl", "#lineStyle"),
+			track
+		);
+	}
+	private XElement GetBackground() {
+		return new XElement(ns + "GroundOverlay",
+			new XElement(ns + "name", "Background"),
+			new XElement(ns + "Icon", ""), // Force it to use the solid colour.
+			new XElement(ns + "color", "ffffffff"),
+			new XElement(ns + "altitude", 0),
+			new XElement(ns + "altitudeMode", "clampToGround"),
+			new XElement(ns + "drawOrder", 0),
+			new XElement(ns + "LatLonBox",
+				new XElement(ns + "north", 90),
+				new XElement(ns + "south", -90),
+				new XElement(ns + "east", -180),
+				new XElement(ns + "west", 180)
+			)
+		);
+	}
+
 	private XElement GetTrack(XElement ext) {
 		// TODO: Interpolite everything. https://swharden.com/blog/2022-01-22-spline-interpolation/
 		return new XElement(gx + "Track",
 			new XElement(ns + "altitudeMode", "relativeToGround"),
+			new XElement(ns + "extrude", 1),
 			Telemetry.RowData.Select(rd => new XElement(ns + "when", rd.TimeStampUtc.AsUTC.ToString(Utilities.DtFormat))),
 			Telemetry.RowData.Select(rd => new XElement(gx + "coord", rd.Coords)),
 			ext
