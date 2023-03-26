@@ -12,15 +12,15 @@ internal class TelemetryRowModel {
 	public Coord gps_longitude { get; set; }
 	public string instant_fuel_consumption { get; set; }
 	public string water_temperature { get; set; }
-	public string boost_temperature { get; set; }
+	public string boost_temperature { get; set; } // Not supported in EX650.
 	public string engine_RPM { get; set; }
 	public string wheel_speed { get; set; }
-	public string acceleration { get; set; }
-	public string throttle_position { get; set; }
-	public string boost_pressure { get; set; }
+	public string acceleration { get; set; } // Not supported in EX650.
+	public string throttle_position { get; set; } // Not supported in EX650.
+	public string boost_pressure { get; set; } // Not supported in EX650.
 	public string gear_position { get; set; }
-	public string brake_pressure_fr_caliper { get; set; }
-	public string lean_angle { get; set; }
+	public string brake_pressure_fr_caliper { get; set; } // Not supported in EX650.
+	public string lean_angle { get; set; } // Not supported in EX650.
 	public string rideology_score { get; set; }
 	public string Coords {
 		get {
