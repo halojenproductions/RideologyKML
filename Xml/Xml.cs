@@ -44,7 +44,7 @@ internal class XmlGenerator {
 		return new XElement(ns + "LookAt",
 			new XElement(gx + "TimeSpan",
 				new XElement(ns + "begin", Telemetry.StartTimeUTC.ToString(Utilities.DtFormat)),
-				new XElement(ns + "end", Telemetry.EndTime.ToString())
+				new XElement(ns + "end", Telemetry.EndTime.ToString(Utilities.DtFormat))
 			),
 			new XElement(ns + "latitude", Telemetry.MiddleLatitude),
 			new XElement(ns + "longitude", Telemetry.MiddleLongitude),
